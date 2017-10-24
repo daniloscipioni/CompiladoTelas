@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="pnlRaiz" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cursojava.projetofinal.ui.JanelaPrincipalController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu text="_Cadastro">
+            <items>
+              <MenuItem onAction="#cadastroCargoOnAction" text="Car_go" />
+                  <MenuItem onAction="#cadastroFuncionarioOnAction" text="F_uncionário" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem onAction="#sairOnAction" text="Sai_r" />
+            </items>
+          </Menu>
+            <Menu text="_Pesquisa">
+              <items>
+                <MenuItem onAction="#pesquisaCargoOnAction" text="Car_go" />
+                  <MenuItem onAction="#pesquisaFuncionarioOnAction" text="F_uncionario" />
+              </items>
+            </Menu>
+            <Menu text="_Ferramentas">
+              <items>
+                <MenuItem onAction="#extensoOnAction" text="_Número por Extenso" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
