@@ -6,7 +6,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="pnlRaiz" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cursojava.projetofinal.ui.JanelaPrincipalController">
+<BorderPane fx:id="pnlRaiz" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cursojava.projetofinal.ui.JanelaPrincipalController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -27,6 +27,7 @@
             <Menu text="_Ferramentas">
               <items>
                 <MenuItem onAction="#extensoOnAction" text="_Número por Extenso" />
+                  <MenuItem mnemonicParsing="false" onAction="#minhocaOnAction" text="Jogo da Minhoca" />
               </items>
             </Menu>
         </menus>

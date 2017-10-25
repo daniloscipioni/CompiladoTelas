@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cursojava.projetofinal.ui.JogoMinhocaController">
+   <top>
+      <AnchorPane onKeyPressed="#PressedOnKey" prefHeight="222.0" prefWidth="284.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnCima" layoutX="196.0" layoutY="13.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" visible="false" />
+            <Circle fx:id="circleId" fill="#070707" layoutX="101.0" layoutY="134.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="lblInfo" layoutX="30.0" layoutY="235.0" onMouseClicked="#ClickOnMouse" text="X =" />
+            <Button fx:id="btnBaixo" layoutX="242.0" layoutY="6.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" />
+            <Button fx:id="btnEsquerda" layoutX="152.0" layoutY="55.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" visible="false" />
+            <Button fx:id="btnDireita" layoutX="242.0" layoutY="55.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" visible="false" />
+            <Label fx:id="lblInfo1" layoutX="170.0" layoutY="236.0" onMouseClicked="#ClickOnMouse" text="Y =" />
+            <Label fx:id="lblX" layoutX="56.0" layoutY="236.0" onMouseClicked="#ClickOnMouse" prefHeight="17.0" prefWidth="50.0" />
+            <Label fx:id="lblY" layoutX="198.0" layoutY="236.0" onMouseClicked="#ClickOnMouse" prefHeight="17.0" prefWidth="41.0" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

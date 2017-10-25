@@ -64,4 +64,12 @@ public class JanelaPrincipalController {
 	void sairOnAction(ActionEvent event) {
 		stage.close();
 	}
+	
+    @FXML
+    void minhocaOnAction(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/JogoMinhoca.fxml"));
+		Parent parent = loader.load();
+		pnlRaiz.setCenter(parent);
+		stage.setTitle("Projeto Final - Jogo Minhoca");
+    }
 }
