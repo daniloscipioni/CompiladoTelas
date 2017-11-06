@@ -1,41 +1,34 @@
 package br.com.cursojava.projetofinal.ui;
 
-import java.util.concurrent.TimeUnit;
 
+import br.com.cursojava.projetofinal.model.Minhoca;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class JogoMinhocaController {
-	
-	static final double LEFTLIMITX = 5.0 ;
-	static final double RIGTHLIMITX = 579.0;
-	static final double UPLIMITY = 5.0;
-	static final double DOWNLIMITY = 332.0;
 
+	static final double LEFTLIMITX = 0 ;
+	static final double RIGTHLIMITX = 579;
+	static final double UPLIMITY = 0;
+	static final double DOWNLIMITY = 331.5;
 	
-    @FXML
-    private Button btnCima;
-
     @FXML
     private Circle circleId;
 
     @FXML
     private Label lblInfo;
 
-    @FXML
-    private Button btnBaixo;
-
-    @FXML
-    private Button btnEsquerda;
-
-    @FXML
-    private Button btnDireita;
 
     @FXML
     private Label lblInfo1;
@@ -45,69 +38,134 @@ public class JogoMinhocaController {
 
     @FXML
     private Label lblY;
-
-    @FXML
-    void ClickOnMouse(MouseEvent event) {
-    	
-    }
-     
-
     
     @FXML
-    void PressedOnKey(KeyEvent Event) throws InterruptedException {
-    	
-    	
-    	if(Event.getCode() == KeyCode.LEFT) {
-    		//while(Event.getCode() == KeyCode.UNDEFINED) {
-    		double left = circleId.getLayoutX();
-            if(left>LEFTLIMITX) {
-            	
-            		circleId.setLayoutX(left - 1);
-            		TimeUnit.MILLISECONDS.sleep(200);
-            	}
-            				
-            //}
-    	}
-    	if(Event.getCode() == KeyCode.RIGHT) {
-    		//while(Event.getCode() == KeyCode.UNDEFINED) {
-    		double right = circleId.getLayoutX();
-        	if(right<RIGTHLIMITX) {
-        		
-        		circleId.setLayoutX(right + 1);
-        		TimeUnit.MILLISECONDS.sleep(200);
-        		}
-        	//}
-    	}
-    	if(Event.getCode() == KeyCode.UP) {
-    		//while(Event.getCode() == KeyCode.UNDEFINED) {
-        	double up = circleId.getLayoutY();
+    private AnchorPane idAnchor;
+    
+	
+
+    
+	public void Esquerda(KeyEvent Event) {
+		double YValue = circleId.getCenterY();
+		
+		if(Event.getCode() == KeyCode.LEFT) {
+    		final Timeline timeline = new Timeline();
+        	final KeyValue kv = new KeyValue(circleId.centerXProperty(), LEFTLIMITX,
+        	 Interpolator.LINEAR);
+        	final KeyValue kv1 = new KeyValue(circleId.centerYProperty(), YValue,
+                  	 Interpolator.LINEAR);
+        
         	
-        	if(up>UPLIMITY) {
-        		
-        		circleId.setLayoutY(up - 1);
-        		TimeUnit.MILLISECONDS.sleep(200);
-        		}
-        	//}
+        	
+        	lblX.setText(""+(int)circleId.getCenterX());
+        	lblY.setText(""+(int)circleId.getCenterY());
+        	
+        	
+        	final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv , kv1);
+        	timeline.getKeyFrames().add(kf);
+        	timeline.play();	
     	}
+		
+	
+	}
+	
+	public void Direita(KeyEvent Event) {
+		
+		double YValue = circleId.getCenterY();
+		if(Event.getCode() == KeyCode.RIGHT) {
+    		            	
+			final Timeline timeline = new Timeline();
+            	
+            	final KeyValue kv = new KeyValue(circleId.centerXProperty(), RIGTHLIMITX-circleId.getRadius(),
+            	 Interpolator.LINEAR);
+            	final KeyValue kv1 = new KeyValue(circleId.centerYProperty(), YValue,
+                   	 Interpolator.LINEAR);
+                   	
+           
+            	lblX.setText(""+(int)circleId.getCenterX());
+            	lblY.setText(""+(int)circleId.getCenterY());
+            	
+            	
+            	final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv ,kv1);
+            	timeline.getKeyFrames().add(kf);
+               	
+            	timeline.play();	
+            	
+       
+    	}
+	}
+	
+	public void Cima(KeyEvent Event) {
+		double XValue = circleId.getCenterX();
+ 
+    	if(Event.getCode() == KeyCode.UP) {
+    		final Timeline timeline = new Timeline();
+     
+        	final KeyValue kv = new KeyValue(circleId.centerYProperty(), UPLIMITY,
+        	 Interpolator.LINEAR);
+        	final KeyValue kv1 = new KeyValue(circleId.centerXProperty(), XValue,
+               	 Interpolator.LINEAR);
+        	
+        	
+        	lblX.setText(""+(int)circleId.getCenterX());
+        	lblY.setText(""+(int)circleId.getCenterY());
+        	
+        	
+        	final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv1 ,kv);
+        	timeline.getKeyFrames().add(kf);
+        	timeline.play();	
+    	}
+	}
+	
+	public void Baixo(KeyEvent Event) {
+		double XValue = circleId.getCenterX();
+		
     	if(Event.getCode() == KeyCode.DOWN) {
 
-    		double down = circleId.getLayoutY();
+        	final Timeline timeline = new Timeline();
+        
+        	final KeyValue kv = new KeyValue(circleId.centerYProperty(), DOWNLIMITY - circleId.getRadius(),
+        	 Interpolator.LINEAR);
         	
-
-        	if(down<DOWNLIMITY) {
-        		
-        		circleId.setLayoutY(down + 1);
-        		TimeUnit.MILLISECONDS.sleep(100);
-        		down = circleId.getLayoutY();
- 
-        		}
+        	final KeyValue kv1 = new KeyValue(circleId.centerXProperty(), XValue,
+               	 Interpolator.LINEAR);
         	
-        		}
+        
+        	lblX.setText(""+(int)circleId.getCenterX());
+        	lblY.setText(""+(int)circleId.getCenterY());
         	
+        	final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv1 ,kv);
+        	timeline.getKeyFrames().add(kf);
+        	timeline.play();	
+        	
+    	}
+	}
+	
+    public void initialize(){
+    	//Coloca o foco no componete AnchorPane para o funcionamento das teclas
+    	idAnchor.setFocusTraversable(true);
+    	circleId.setLayoutX(5);
+    	circleId.setLayoutY(5);
     	
-    	//lblInfo.setText(""+Event.getCode());
-    	lblX.setText(""+circleId.getLayoutX());
-    	lblY.setText(""+circleId.getLayoutY());
+    	Minhoca m = new Minhoca();
+    	
+    	m.AddElement(idAnchor, 13, 90);
+
+    	
+     }
+    
+
+    @FXML
+    void PressedOnKey(KeyEvent event) throws InterruptedException {
+		this.Esquerda(event);
+        this.Baixo(event);
+	    this.Cima(event);
+	    this.Direita(event); 
     }
+    
+
+    
+
+   
 
 }

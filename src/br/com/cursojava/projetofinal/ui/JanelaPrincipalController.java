@@ -19,6 +19,14 @@ public class JanelaPrincipalController {
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
+	
+	
+
+	public Stage getStage() {
+		return stage;
+	}
+
+
 
 	@FXML
     void cadastroCargoOnAction(ActionEvent event) throws IOException {
